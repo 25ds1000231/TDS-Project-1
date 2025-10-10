@@ -13,13 +13,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up GitHub Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Build static site
+      - name: Build static content
         run: |
           mkdir public
           echo "<h1>Hello from GitHub Pages</h1>" > public/index.html
@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: public
-          name: github-pages-artifact  # Avoids multiple artifacts error
+          name: github-pages-artifact  # Explicit name to avoid conflicts
 
   deploy:
     needs: build
